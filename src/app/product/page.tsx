@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 
 const ProductPace = () => {
   return (
-    <div className="p-5 border border-red-500 rounded-xl">
+    <div className="rounded-xl border border-red-500 p-5">
       <h1 className="text-red-500">Products Page</h1>
       <Button>tetse</Button>
       <Input />
