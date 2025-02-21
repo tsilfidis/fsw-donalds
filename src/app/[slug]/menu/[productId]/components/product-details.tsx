@@ -26,7 +26,7 @@ interface ProductDatailsProps {
 }
 
 const ProductDetails = ({ product }: ProductDatailsProps) => {
-  const { toggleCart } = useContext(CartContext);
+  const { toggleCart, addProduct } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(1);
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => {
@@ -41,6 +41,10 @@ const ProductDetails = ({ product }: ProductDatailsProps) => {
     setQuantity((prev) => prev + 1);
   };
   const handleAddToCart = () => {
+    addProduct({
+      ...product,
+      quantity,
+    });
     toggleCart();
   };
 
