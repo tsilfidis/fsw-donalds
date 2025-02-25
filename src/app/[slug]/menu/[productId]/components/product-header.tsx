@@ -16,6 +16,7 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
   const handleBackClick = () => router.back();
+  const handleOrdersClick = () => router.push(`/${slug}/orders`);
   return (
     <div className="relative min-h-[300px] w-full">
       <Button
@@ -33,11 +34,12 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
         fill
         className="object-contain"
       />
-      <Link href={`/${slug}/orders?cpf=89848632115`}>
+      <Link href={`/${slug}/orders`}>
         <Button
           variant="secondary"
           size="icon"
           className="absolute right-4 top-4 z-50 rounded-full"
+          onClick={handleOrdersClick}
         >
           <ScrollTextIcon />
         </Button>
