@@ -3,7 +3,8 @@
 import { Product } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +13,7 @@ interface ProductHeaderProps {
 }
 
 const ProductHeader = ({ product }: ProductHeaderProps) => {
+  const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
   const handleBackClick = () => router.back();
   return (
@@ -31,13 +33,15 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
         fill
         className="object-contain"
       />
-      <Button
-        variant="secondary"
-        size="icon"
-        className="absolute right-4 top-4 z-50 rounded-full"
-      >
-        <ScrollTextIcon />
-      </Button>
+      <Link href={`/${slug}/orders?cpf=89848632115`}>
+        <Button
+          variant="secondary"
+          size="icon"
+          className="absolute right-4 top-4 z-50 rounded-full"
+        >
+          <ScrollTextIcon />
+        </Button>
+      </Link>
     </div>
   );
 };
