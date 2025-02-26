@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { db } from "@/lib/prisma";
 
 const HomePage = async () => {
@@ -10,12 +11,12 @@ const HomePage = async () => {
   if (!restaurants) {
     return notFound();
   }
-  console.log(restaurants);
   return (
     <div className="flex flex-col items-center overflow-hidden">
       <h1 className="mb-6 mt-6 text-center font-semibold">
         Selecione o restaurante
       </h1>
+      <Label className="mb-1">Busca</Label>
       <Input placeholder="Busque o restaurante..." className="w-[95%]" />
       <div className="flex items-center justify-center gap-5 overflow-y-auto p-5">
         {restaurants.map((restaurant) => (
@@ -33,7 +34,7 @@ const HomePage = async () => {
                 className="object-cover"
               />
             </div>
-            <p>{restaurant.name}</p>
+            <p className="font-semibold">{restaurant.name}</p>
           </Link>
         ))}
       </div>
