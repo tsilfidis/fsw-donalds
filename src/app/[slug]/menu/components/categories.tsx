@@ -40,7 +40,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
 
   const restaurantIsOpen = () => {
     const currentHour = new Date().getHours();
-    return currentHour >= 6 && currentHour < 22;
+    return currentHour >= 10 && currentHour < 22;
   };
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
     return selectedCategory.id === category.id ? "default" : "secondary";
