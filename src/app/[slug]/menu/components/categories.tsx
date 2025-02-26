@@ -37,6 +37,11 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
   const handleCategoryClick = (category: MenuCategoriesWithProducts) => {
     setSelectedCategory(category);
   };
+
+  const restaurantIsOpen = () => {
+    const currentHour = new Date().getHours();
+    return currentHour >= 6 && currentHour < 22;
+  };
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
     return selectedCategory.id === category.id ? "default" : "secondary";
   };
@@ -55,9 +60,14 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
             <p className="text-xs opacity-55">{restaurant.description}</p>
           </div>
         </div>
-        <div className="mt-3 flex items-center gap-1 text-xs text-green-500">
-          <ClockIcon size={12} />
-          <p>Aberto!</p>
+        <div className="mt-3 flex items-center gap-1 text-xs font-semibold">
+          <ClockIcon
+            size={13}
+            className={restaurantIsOpen() ? "text-green-500" : "text-red-500"}
+          />
+          <p className={restaurantIsOpen() ? "text-green-500" : "text-red-500"}>
+            {restaurantIsOpen() ? "Aberto!" : "Fechado!"}
+          </p>
         </div>
       </div>
 
@@ -78,8 +88,11 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
-      <Products products={selectedCategory.products} />
+      <ScrollArea className="h-[90%] w-full">
+        <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
+        <Products products={selectedCategory.products} />
+        <ScrollBar orientation="vertical" />
+      </ScrollArea>
       {products.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 flex w-full items-center justify-between border-t bg-white px-5 py-3">
           <div>

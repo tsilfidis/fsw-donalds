@@ -22,21 +22,24 @@ const ConsumptionMethodOption = ({
 }: ConsumptionMethodOptionProps) => {
   return (
     <Card>
-      <CardContent className="flex flex-col items-center gap-8 py-8">
-        <div className="retative h-[80px] w-[80px]">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            width={78}
-            height={80}
-            className="object-contain"
-          />
-        </div>
-        <Button variant="secondary" className="rounded-full" asChild>
-          <Link href={`/${slug}/menu?consumptionMethod=${opiton}`}>
+      <CardContent className="flex flex-col items-center gap-8 py-4">
+        <Link
+          href={`/${slug}/menu?consumptionMethod=${opiton}`}
+          className="flex flex-col items-center gap-2"
+        >
+          <div className="retative h-[70px] w-[70px]">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              width={70}
+              height={70}
+              className="object-contain"
+            />
+          </div>
+          <Button variant="secondary" className="rounded-full">
             {buttonText}
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );

@@ -12,21 +12,28 @@ const HomePage = async () => {
   }
   console.log(restaurants);
   return (
-    <div>
-      <h1 className="mt-6 text-center font-semibold">
+    <div className="overflow-hidden">
+      <h1 className="mb-6 mt-6 text-center font-semibold">
         Selecione o restaurante
       </h1>
       <Input placeholder="Busque o restaurante..." />
-      <div className="ali flex items-center justify-center gap-5 p-5">
+      <div className="flex items-center justify-center gap-5 overflow-y-auto p-5">
         {restaurants.map((restaurant) => (
-          <Link key={restaurant.id} href={`/${restaurant.slug}`}>
-            <Image
-              src={restaurant.avatarImageUrl}
-              alt={restaurant.name}
-              width={100}
-              height={100}
-              className="object-cover"
-            />
+          <Link
+            href={`/${restaurant.slug}`}
+            key={restaurant.id}
+            className="flex h-[125px] flex-col items-center justify-between"
+          >
+            <div className="flex h-[100px] flex-col justify-center">
+              <Image
+                src={restaurant.avatarImageUrl}
+                alt={restaurant.name}
+                width={100}
+                height={100}
+                className="object-cover"
+              />
+            </div>
+            <p>{restaurant.name}</p>
           </Link>
         ))}
       </div>
